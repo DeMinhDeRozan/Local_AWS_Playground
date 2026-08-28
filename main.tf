@@ -38,8 +38,8 @@ resource "aws_s3_bucket_public_access_block" "bucket1" {
 
 resource "aws_s3_object" "upload_and_update" {
   bucket = aws_s3_bucket.bucket1.id
-  key = "HUM.html"
-  source = "1/1.html"
+  key = "index.html"
+  source = "s3/index.html"
   content_type = "text/html"
   depends_on = [ aws_s3_bucket.bucket1 ]
   provisioner "local-exec" {
