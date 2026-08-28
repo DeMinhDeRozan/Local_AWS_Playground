@@ -22,7 +22,7 @@ This project is a hands-on scaffold for practicing AWS S3 workflows entirely on 
 |---|---|---|
 | 🧪 Mock backend | **Floci** | Emulates the AWS API locally |
 | 🏗️ Infrastructure | **Terraform** | Provisions the S3 bucket as code |
-| 🐍 File management | **Python (Boto3)** | Uploads/downloads files & generates presigned URLs |
+| 🐍 File management | **Python (Boto3)** | Generates presigned URL |
 
 ---
 
@@ -81,7 +81,7 @@ terraform apply
 
 ### 3️⃣ Run the Python Script
 
-Use `host_s3.py` to connect to the emulated S3 service and generate a presigned URL (upload/download):
+Use `host_s3.py` to connect to the emulated S3 service and generate a presigned URL:
 
 ```bash
 python host_s3.py
