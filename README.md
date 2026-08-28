@@ -43,6 +43,7 @@ aws_s3_sandbox/
 ## ✅ Prerequisites
 
 - 🐳 Docker & Docker Compose — to run the Floci container
+- 🖥️ Floci - AWS environment simulator - https://floci.io/aws/
 - 🏗️ Terraform — Infrastructure as Code
 - 🐍 Python 3.x with the `boto3` library
 
