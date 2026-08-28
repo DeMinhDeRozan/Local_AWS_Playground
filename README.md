@@ -1,0 +1,116 @@
+<div align="center">
+
+# 🪣 AWS S3 Local Sandbox
+### Terraform + Python (Boto3) + Floci
+
+*A fully local playground for practicing AWS S3 infrastructure — no real AWS account required.*
+
+![Terraform](https://img.shields.io/badge/Terraform-IaC-844FBA?style=for-the-badge&logo=terraform&logoColor=white)
+![Python](https://img.shields.io/badge/Python-Boto3-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Floci-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-S3%20Mock-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)
+
+</div>
+
+---
+
+## 📖 Overview
+
+This project is a hands-on scaffold for practicing AWS S3 workflows entirely on your machine:
+
+| Layer | Tool | Role |
+|---|---|---|
+| 🧪 Mock backend | **Floci** | Emulates the AWS API locally |
+| 🏗️ Infrastructure | **Terraform** | Provisions the S3 bucket as code |
+| 🐍 File management | **Python (Boto3)** | Uploads/downloads files & generates presigned URLs |
+
+---
+
+## 📁 Project Structure
+
+```
+aws_s3_sandbox/
+├── .gitignore
+├── versions.tf
+├── main.tf
+├── s3
+    ├──index.html
+└── README.md
+```
+
+---
+
+## ✅ Prerequisites
+
+- 🐳 Docker & Docker Compose — to run the Floci container
+- 🏗️ Terraform — Infrastructure as Code
+- 🐍 Python 3.x with the `boto3` library
+
+---
+
+## 🚀 Local Deployment Guide
+
+### 1️⃣ Start Floci
+
+Create a `docker-compose.yml` that exposes port `4566`:
+
+```yaml
+version: '3.8'
+services:
+  floci:
+    image: floci/floci:latest
+    ports:
+      - "4566:4566"
+```
+
+Then launch it:
+
+```bash
+docker compose up -d
+```
+
+### 2️⃣ Provision Resources with Terraform
+
+Configure `main.tf` to point its endpoint to `http://localhost:4566` using mock credentials, then run:
+
+```bash
+terraform init
+terraform apply
+```
+
+### 3️⃣ Run the Python Script
+
+Use `host_s3.py` to connect to the emulated S3 service and generate a presigned URL (upload/download):
+
+```bash
+python host_s3.py
+```
+
+---
+
+## 🧹 Git Management (`.gitignore`)
+
+The following local state and cache files are excluded from version control:
+
+```
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+```
+
+---
+
+## 💡 Notes
+
+> - 🔒 All AWS credentials used here are **mock/dummy values** — nothing touches a real AWS account.
+> - 🔌 Make sure port `4566` is free before starting Floci.
+> - 🗑️ To tear everything down: `terraform destroy` then `docker compose down`.
+
+---
+
+<div align="center">
+
+Made for local AWS practice 🛠️ • No cloud bill required 💸
+
+</div>
