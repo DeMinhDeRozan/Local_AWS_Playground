@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Threats & Human Exploitation — Financial SMEs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #080E1A;
+    --navy-panel: #0F1B2E;
+    --navy-panel-2: #15243B;
+    --navy-hover: #1A2D4A;
+    --parchment: #F3EFE6;
+    --parchment-dim: #9EABBE;
+    --gold: #D4AF37;
+    --gold-soft: #F1D779;
+    --gold-glow: rgba(212, 175, 55, 0.12);
+    --alert: #E05244;
+    --alert-bg: rgba(224, 82, 68, 0.1);
+    --teal: #3EB4A2;
+    --teal-bg: rgba(62, 180, 162, 0.08);
+    --slate: #6C7D93;
+    --rule: rgba(243, 239, 230, 0.1);
+    --rule-highlight: rgba(212, 175, 55, 0.35);
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.35);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.45);
+  }
+  
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--navy-deep); scroll-behavior: smooth; }
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--parchment);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 32px 80px; }
+  h1, h2, h3 { font-family: 'Fraunces', serif; letter-spacing: -0.015em; color: var(--parchment); }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    background: 
+      radial-gradient(800px 400px at 90% -10%, rgba(212, 175, 55, 0.18), transparent 70%),
+      radial-gradient(600px 300px at 10% 20%, rgba(62, 180, 162, 0.1), transparent 60%),
+      linear-gradient(180deg, #050A14 0%, var(--navy-deep) 100%);
+    border-bottom: 1px solid var(--rule);
+    padding: 64px 32px 52px;
+    position: relative;
+  }
+  .hero-inner { max-width: 1060px; margin: 0 auto; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold-soft);
+    display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    background: var(--gold-glow); padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+  .hero h1 { 
+    font-size: clamp(32px, 4.2vw, 48px); line-height: 1.12; margin: 0 0 16px; max-width: 860px; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  .hero .sub { color: var(--parchment-dim); font-size: 16px; max-width: 680px; margin: 0 0 40px; }
+  
+  .ledger {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: var(--navy-panel);
+    border: 1px solid var(--rule); border-radius: 8px;
+    box-shadow: var(--shadow-md);
+  }
+  .ledger-item { padding: 22px 26px; border-right: 1px solid var(--rule); }
+  .ledger-item:last-child { border-right: none; }
+  .ledger-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); margin-bottom: 6px; }
+  .ledger-value { font-family: 'Fraunces', serif; font-size: 32px; color: var(--gold-soft); font-weight: 600; line-height: 1; }
+  .ledger-cite { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate); margin-top: 8px; }
+
+  /* ===== SECTION SETUP ===== */
+  .section { padding: 56px 0 20px; border-bottom: 1px solid var(--rule); }
+  .section:last-of-type { border-bottom: none; }
+  .tag-row { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700;
+    color: var(--navy-deep); background: var(--gold);
+    width: 28px; height: 28px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .section h2 { font-size: 24px; margin: 0; }
+  .section .lede { color: var(--gold-soft); font-size: 14.5px; max-width: 760px; margin: 0 0 24px; font-weight: 500; }
+  p { margin: 0 0 14px; font-size: 14.5px; color: #D5D1C5; line-height: 1.68; }
+  strong { color: var(--parchment); }
+
+  /* ===== A: INDUSTRY PROFILE ===== */
+  .profile-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: stretch; }
+  .trait-list { 
+    background: var(--navy-panel); border: 1px solid var(--rule); border-radius: 8px; 
+    padding: 22px; display: flex; flex-direction: column; gap: 16px; justify-content: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .trait { border-bottom: 1px dashed var(--rule); padding-bottom: 10px; }
+  .trait:last-child { border-bottom: none; padding-bottom: 0; }
+  .trait-k { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 2px; }
+  .trait-v { font-size: 13.5px; color: var(--parchment-dim); line-height: 1.4; }
+
+  /* ===== B: BUSINESS MODELS ===== */
+  .listings { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 6px; }
+  .listing {
+    background: var(--navy-panel); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 22px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: var(--shadow-sm); transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .listing:hover { transform: translateY(-2px); border-color: var(--rule-highlight); background: var(--navy-hover); }
+  .listing::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--alert)); }
+  .listing-code { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--teal); letter-spacing: 0.08em; font-weight: 600; }
+  .listing h3 { font-size: 16px; margin: 4px 0 8px; color: var(--parchment); font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; }
+  .listing p { font-size: 13.5px; margin-bottom: 0; color: #CFCABE; }
+  .listing .ai-role {
+    margin-top: 14px; padding: 10px 12px; background: rgba(0,0,0,0.25); border-radius: 6px; border: 1px solid var(--rule);
+    font-size: 12px; color: var(--parchment-dim);
+  }
+  .listing .ai-role b { color: var(--gold-soft); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ===== C: THREAT & CASES ===== */
+  .cases { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 16px 0 14px; }
+  .case {
+    background: var(--navy-panel-2); border: 1px solid var(--rule); border-radius: 8px; padding: 22px;
+    box-shadow: var(--shadow-sm); border-left: 4px solid var(--alert);
+  }
+  .case-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .case-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; }
+  .case-year { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--slate); }
+  .case-stat { font-family: 'Fraunces', serif; font-size: 28px; color: var(--alert); font-weight: 600; margin-bottom: 8px; }
+  .case p { font-size: 13px; color: #CFCABE; margin-bottom: 0; }
+  .case-cite { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate); margin-top: 10px; }
+
+  .triptych { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 12px; }
+  .tri-card { border: 1px solid var(--rule); border-radius: 8px; padding: 18px; background: var(--navy-panel); box-shadow: var(--shadow-sm); }
+  .tri-card h4 { margin: 0 0 6px; font-size: 12.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold-soft); }
+  .tri-card p { font-size: 12.8px; margin: 0; color: #CFCABE; }
+
+  /* ===== D: HUMAN FACTORS ===== */
+  .levers { display: flex; gap: 14px; margin: 12px 0 18px; }
+  .lever {
+    flex: 1; background: var(--alert-bg); border: 1px solid rgba(224, 82, 68, 0.35);
+    border-radius: 6px; padding: 10px 14px; text-align: center;
+  }
+  .lever .lv-title { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--alert); font-weight: 600; }
+
+  /* ===== E: MITIGATION ===== */
+  .mit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+  .mit-card { 
+    border: 1px solid var(--rule); border-radius: 8px; padding: 20px; background: var(--navy-panel); 
+    border-top: 4px solid var(--teal); box-shadow: var(--shadow-sm);
+  }
+  .mit-card h3 { font-size: 14.5px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; color: var(--teal); margin: 0 0 8px; }
+  .mit-card p { font-size: 12.8px; margin: 0; color: #CFCABE; }
+
+  /* ===== REFERENCES ===== */
+  .refs { padding: 48px 0 20px; }
+  .refs h2 { font-size: 18px; margin-bottom: 18px; }
+  .ref-item {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 1.65;
+    color: var(--parchment-dim); padding-left: 1.8em; text-indent: -1.8em; margin-bottom: 10px;
+  }
+  .ref-item a { color: var(--teal); text-decoration: none; word-break: break-all; }
+  .ref-item a:hover { text-decoration: underline; }
+  
+  footer { 
+    padding: 24px 32px 40px; text-align: center; color: var(--slate); 
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; border-top: 1px solid var(--rule);
+  }
+
+  /* ===== PRINT & PDF OPTIMIZATION (Ctrl + P) ===== */
+  @media print {
+  @page {
+    size: A4 portrait;
+    margin: 0; /* Xóa hoàn toàn viền trắng bao quanh trang */
+  }
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  html, body {
+    background-color: #080E1A !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .hero {
+    background: #080E1A !important;
+    padding: 40px 32px 30px !important;
+  }
+  .wrap {
+    padding: 0 32px 40px !important;
+  }
+  .section {
+    page-break-inside: avoid; /* Chống bị cắt đôi các khung/thẻ giữa 2 trang */
+  }
+}
+
+  @media(max-width:760px){
+    .ledger { grid-template-columns: 1fr; }
+    .ledger-item { border-right: none; border-bottom: 1px solid var(--rule); }
+    .profile-grid { grid-template-columns: 1fr; }
+    .listings, .cases, .triptych, .mit-grid { grid-template-columns: 1fr; }
+    .levers { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Industry Threat Briefing — Finance Sector SMEs</div>
+    <h1>Cyber Threats &amp; Human Exploitation in an AI-Enabled Cybercrime Economy</h1>
+    <p class="sub">How commercialised cybercrime, artificial intelligence and human trust converge to expose small and medium-sized financial enterprises — and what a resilient SME response looks like.</p>
+    
+    <div class="ledger">
+      <div class="ledger-item">
+        <div class="ledger-label">BEC Losses, 2025 (US)</div>
+        <div class="ledger-value">$3.04B</div>
+        <div class="ledger-cite">(Federal Bureau of Investigation [FBI], 2025)</div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-label">Number of AI-Bolstered Attack Techniques</div>
+        <div class="ledger-value">15</div>
+        <div class="ledger-cite">(Verizon, 2026)</div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-label">Deepfake CFO Video Loss</div>
+        <div class="ledger-value">$25.6M</div>
+        <div class="ledger-cite">(Magramo, 2024)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- A: INDUSTRY PROFILE -->
+  <section class="section">
+    <div class="tag-row"><div class="tag">A</div><h2>Industry Profile</h2></div>
+    <p class="lede">Where financial SMEs sit in the economy, and why their operating model makes them disproportionately attractive targets.</p>
+    <div class="profile-grid">
+      <div>
+        <p>Small and medium-sized enterprises (SMEs) operating in the finance sector— including independent accounting firms, financial advisory practices, insurance brokers and fintech startups—play a key role in economic infrastructure. Unlike large-scale corporations, these organizations mainly operate without dedicated security teams, heavily relying on outsourced IT support instead. Nevertheless, these organizations handle their high-value financial transactions, sensitive personally identifiable information (PII), and confidential financial records by themselves.</p>
+        <p>Their digital maturity varies broadly as many companies have leveraged cloud-based accounting platforms, client portals or third-party payment processors, yet often lack multi-layer authentication and monitoring systems, which are strictly mandated in large companies. These vulnerabilities, together with high-value data existence, turn financial SMEs into attractive targets for cybercriminals.</p>
+      </div>
+      <div class="trait-list">
+        <div class="trait"><div class="trait-k">Workforce &amp; Structure</div><div class="trait-v">Lean teams, outsourced IT, limited in-house SecOps expertise.</div></div>
+        <div class="trait"><div class="trait-k">Digital Maturity</div><div class="trait-v">Rapid adoption of cloud accounting, client portals &amp; APIs.</div></div>
+        <div class="trait"><div class="trait-k">Security Deficit</div><div class="trait-v">Sparse biometric MFA and telemetry logging compared to Tier-1 banks.</div></div>
+        <div class="trait"><div class="trait-k">Target Attractiveness</div><div class="trait-v">Direct conduit to capital reserves and high-value customer PII.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B: BUSINESS MODELS -->
+  <section class="section">
+    <div class="tag-row"><div class="tag">B</div><h2>Cybercrime Business Models</h2></div>
+    <p class="lede">Cybercrime has elevated from personal hacking activities into team-working, structured and commercialized models to target financial SMEs.</p>
+    <div class="listings">
+      <div class="listing">
+        <div>
+          <div class="listing-code">MODEL 01 — RaaS</div>
+          <h3>Ransomware-as-a-Service</h3>
+          <p>RaaS models include various toolkits supporting the data encryption and extortion process. They are developed and sold or leased to affiliates, who utilize them to encrypt client and account records to demand ransom.</p>
+        </div>
+        <div class="ai-role"><b>Commercial Architecture</b> — Mirrors enterprise SaaS where developers, affiliates, and negotiators split ransoms (Halcyon, n.d.).</div>
+      </div>
+      <div class="listing">
+        <div>
+          <div class="listing-code">MODEL 02 — BECaaS</div>
+          <h3>Business Email Compromise-as-a-Service</h3>
+          <p>This model provides scammers with phishing email templates, domain spoofing services and authentication bypassing toolkits.</p>
+        </div>
+        <div class="ai-role"><b>AI Integration</b> — AI is reportedly abused to analyze the communication stream and automatically generate persuasive, flawless emails mimicking trusted personnel (Lewis, 2025).</div>
+      </div>
+      <div class="listing">
+        <div>
+          <div class="listing-code">MODEL 03 — DaaS</div>
+          <h3>Deepfake-as-a-Service</h3>
+          <p>Vendors provide synthetic media tools, audio cloning engines, and real-time video face-swapping software via periodic subscription.</p>
+        </div>
+        <div class="ai-role"><b>AI Integration</b> — Allows threat actors to generate convincing voice clones or realistic videos, specifically engineered to deceive finance personnel during authorization calls (Cyble, 2025).</div>
+      </div>
+      <div class="listing">
+        <div>
+          <div class="listing-code">MODEL 04 — IAB</div>
+          <h3>Initial Access Brokers</h3>
+          <p>Specialized criminals compromise corporate networks to gain covert access, which they later sell on black market.</p>
+        </div>
+        <div class="ai-role"><b>Target Dynamics</b> — Financial SMEs are primary targets due to high value information and weak security systems inside their network, suitable for ransomware affiliates looking for quick extortion payouts (Tatar, n.d.).</div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- C: THREAT & CASES -->
+  <section class="section">
+    <div class="tag-row"><div class="tag">C</div><h2>Threat Assessment &amp; Impact Analysis</h2></div>
+    <p class="lede">Two real-world incidents illustrate how commercialised threat architectures manifest as existential organisational impacts.</p>
+    <p><strong>Key Threats:</strong> AI-enhanced phishing — Large Language Models (LLMs) are utilized to scrape professional networking platforms to construct corporate hierarchies and conduct social engineering attacks based on them. AI audio and video executive impersonation — attackers utilize the DaaS platform to mimic executive voices or video presence during authorization/approval workflows.</p>
+
+    <div class="cases">
+      <div class="case">
+        <div class="case-head"><div class="case-name">Multinational Engineering Firm</div><div class="case-year">2024</div></div>
+        <div class="case-stat">$25.6M</div>
+        <p>A finance worker was tricked into transferring $25.6 million USD after attending a fabricated video call with the company's CFO and colleagues, who were in fact DaaS-generated clones — showing the progress of synthetic media in human behavior manipulation.</p>
+        <div class="case-cite">(Magramo, 2024)</div>
+      </div>
+      <div class="case">
+        <div class="case-head"><div class="case-name">Colonial Pipeline</div><div class="case-year">United States · 2021</div></div>
+        <div class="case-stat">$4.4M</div>
+        <p>An Initial Access Broker allegedly compromised and sold a legacy, non-MFA VPN account to the DarkSide (RaaS) attackers, allowing them to intrude and encrypt confidential server data, leading to a $4.4 million ransom payout and nationwide operation disruption.</p>
+        <div class="case-cite">(INSURICA, 2025)</div>
+      </div>
+    </div>
+
+    <div class="triptych">
+      <div class="tri-card">
+        <h4>Operational</h4>
+        <p>RaaS-based attacks result in long system lockouts and utter workflow halt, so online transactions and key systems cannot be processed properly — disrupting daily operations and even breaching service level agreements (SLAs).</p>
+      </div>
+      <div class="tri-card">
+        <h4>Financial &amp; Legal</h4>
+        <p>Beyond direct capital losses, the organization faces severe regulatory penalties under frameworks such as GDPR for failing to protect sensitive personal information, plus costly legal defense and disaster recovery expenses.</p>
+      </div>
+      <div class="tri-card">
+        <h4>Human &amp; Reputational</h4>
+        <p>Employees involved in a breach or fraudulent transfer often undergo serious psychological stress, self-blame, and loss of confidence in their own judgement, while customers face escalating risk of identity theft and fraud — driving client churn among key stakeholders.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- D: HUMAN FACTORS -->
+  <section class="section">
+    <div class="tag-row"><div class="tag">D</div><h2>Human Factors &amp; Exploitation</h2></div>
+    <p class="lede">Human psychology remains the prime attack vector, with AI eliminating the traditional detection cues once used by staff.</p>
+    <div class="levers">
+      <div class="lever"><div class="lv-title">⚡ Perceived Urgency</div></div>
+      <div class="lever"><div class="lv-title">👔 Authority Deference</div></div>
+      <div class="lever"><div class="lv-title">🤝 Interpersonal Familiarity</div></div>
+    </div>
+    <p>Human behaviors remain the leading point of failure in cybersecurity, and AI is actively reshaping how this human vulnerability is exploited. Hackers deliberately fabricate situations built on authority, urgency and familiarity to trigger hasty and unverified decisions. In SMEs, authentication methods for financial approval are often substandard as these organizations rely on interpersonal trust among employees rather than zero-trust frameworks, inducing a critical weakness that enables attackers to leverage deepfake clones for sophisticated social engineering. Moreover, modern deepfake technology has bypassed the detection cues via inconsistencies that people once relied on to mitigate deception.</p>
+    <p>The lack of human perception in compliance with essential security principles also leads to successful cyberattacks. Many financial SMEs lean on basic security strategies such as firewalls or antivirus software to protect sensitive data, usually assuming advanced security approaches are too complex, expensive, or require deep knowledge to maintain. Staff with such misconceptions also fail to manage credentials appropriately, increasing the risk of credential theft by access brokers. In addition, a lack of necessary training in social engineering awareness leaves personnel vulnerable to these sophisticated attacks. Furthermore, cognitive fatigue, caused by sustained work pressure, hinders employees from properly detecting subtle anomalies and identifying policy non-compliance.</p>
+  </section>
+
+  <!-- E: MITIGATION -->
+  <section class="section">
+    <div class="tag-row"><div class="tag">E</div><h2>Practical SME Mitigation Strategies</h2></div>
+    <p class="lede">To enhance resilience against commercialized cybercrime (RaaS, DaaS), financial SMEs should implement multi-layer, cost-effective measures balancing technical controls, human behavioral interventions and AI-governance principles.</p>
+    <div class="mit-grid">
+      <div class="mit-card">
+        <h3>1. Technical Controls</h3>
+        <p>Enforce biometric-MFA and multi-signatory approvals to verify any payment or credential change request, mitigating DaaS-powered and IAB-driven tactics that fuel BEC attacks. Process these requests in an isolated environment to limit lateral movement by RaaS affiliates, and rotate credentials periodically to degrade the shelf life of harvested credentials before IABs can monetize them.</p>
+      </div>
+      <div class="mit-card">
+        <h3>2. Behavioural Interventions</h3>
+        <p>Conduct regular, scenario-based AI social engineering and BEC-based phishing simulations so employees understand pressure tactics such as authority, urgency and familiarity. Promote zero-trust principles throughout the organization, shifting employees from trust-based assumptions to evidence-based decision-making to prevent DaaS-based attacks.</p>
+      </div>
+      <div class="mit-card">
+        <h3>3. AI Governance</h3>
+        <p>Enact strict, clear internal policies for the secure and responsible use of AI, including AI-powered behavioral analytics and monitoring to detect irregular logins or abnormal financial/credential-related emails indicative of RaaS or BEC activity. AI operations within the organization must be strictly governed and sandboxed to guarantee systemic integrity and prevent internal misuse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="refs">
+    <h2>References <span class="mono" style="font-size:12px;color:var(--slate);"></span></h2>
+    <div class="ref-item">Cyble. (2025, December 11). <em>Deepfake-as-a-service exploded in 2025: How synthetic identities will shape 2026 threats</em>. Cyble Knowledge Hub. <a href="https://cyble.com/knowledge-hub/deepfake-as-a-service-exploded-in-2025/" target="_blank">https://cyble.com/knowledge-hub/deepfake-as-a-service-exploded-in-2025/</a></div>
+    <div class="ref-item">Federal Bureau of Investigation, Internet Crime Complaint Center. (2025). <em>Internet crime report 2024</em>. U.S. Department of Justice. <a href="https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf" target="_blank">https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf</a></div>
+    <div class="ref-item">Halcyon. (n.d.). <em>RaaS vs SaaS: Understanding the ransomware-as-a-service model</em>. Halcyon AI. <a href="https://www.halcyon.ai/raas-vs-saas" target="_blank">https://www.halcyon.ai/raas-vs-saas</a></div>
+    <div class="ref-item">INSURICA. (2025, April 25). <em>Cyber case study: Colonial Pipeline ransomware attack</em>. <a href="https://insurica.com/blog/colonial-pipeline-ransomware-attack/" target="_blank">https://insurica.com/blog/colonial-pipeline-ransomware-attack/</a></div>
+    <div class="ref-item">Lewis, L. (2025, June 25). <em>Understanding business email compromise (BEC): How it works</em>. Huntress. <a href="https://www.huntress.com/blog/what-is-business-email-compromise-bec" target="_blank">https://www.huntress.com/blog/what-is-business-email-compromise-bec</a></div>
+    <div class="ref-item">Magramo, K. (2024, May 17). <em>British engineering giant Arup revealed as $25 million deepfake scam victim</em>. CNN Business. <a href="https://www.cnn.com/2024/05/16/tech/arup-deepfake-scam-loss-hong-kong-intl-hnk" target="_blank">https://www.cnn.com/2024/05/16/tech/arup-deepfake-scam-loss-hong-kong-intl-hnk</a></div>
+    <div class="ref-item">Manglicmot, M. (2022, August 19). <em>The attacker's toolkit: Ransomware-as-a-service</em>. Arctic Wolf. <a href="https://arcticwolf.com/resources/blog/ransomware-as-a-service/" target="_blank">https://arcticwolf.com/resources/blog/ransomware-as-a-service/</a></div>
+    <div class="ref-item">Tatar, S. (n.d.). <em>Initial access brokers</em>. Arctic Wolf. <a href="https://arcticwolf.com/resources/glossary/what-are-initial-access-brokers/" target="_blank">https://arcticwolf.com/resources/glossary/what-are-initial-access-brokers/</a></div>
+    <div class="ref-item">Verizon. (2026). <em>2026 data breach investigations report</em>. <a href="https://www.verizon.com/business/resources/Tfaf/reports/2026-dbir-data-breach-investigations-report.pdf" target="_blank">https://www.verizon.com/business/resources/Tfaf/reports/2026-dbir-data-breach-investigations-report.pdf</a></div>  </section>
+
+</div>
+
+<footer>Assessment 2 — Digital Industry Communication Artefact · Financial Sector SMEs</footer>
+
+</body>
+</html>
