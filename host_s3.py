@@ -23,7 +23,7 @@ try:
     url = s3_client.generate_presigned_url(
         'get_object',
         Params={'Bucket': bucket_name, 'Key': file_key},
-        ExpiresIn=3600 #1 hour expiry
+        ExpiresIn=3600 
     )
     
     print(f"Successfully")
