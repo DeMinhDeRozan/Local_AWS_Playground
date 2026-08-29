@@ -22,7 +22,7 @@ This project is a hands-on scaffold for practicing AWS S3 workflows entirely on 
 |---|---|---|
 | 🧪 Mock backend | **Floci** | Emulates the AWS API locally |
 | 🏗️ Infrastructure | **Terraform** | Provisions the S3 bucket as code |
-| 🐍 File management | **Python (Boto3)** | Generates presigned URL |
+| 🐍 File management | **Python (AWS SDK - Boto3)** | Generates presigned URL |
 
 ---
 
