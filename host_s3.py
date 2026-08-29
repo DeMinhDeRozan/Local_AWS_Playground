@@ -9,7 +9,7 @@ s3_client = boto3.client(
 )
 
 bucket_name = 'my-bucket-1'
-file_key = 'HUM.html'
+file_key = 'index.html'
 
 try:
     print(f" Loading '{file_key}' from bucket '{bucket_name}'...")
