@@ -1,7 +1,7 @@
 import boto3
 
 # It is just a fun test, so AWS credentials are NOT REAL
-# In case you would like to use this template for real AWS pratice, use the .env variables
+# In case you would like to use this template for real AWS practice, use the .env variables
 s3_client = boto3.client(
     's3',
     endpoint_url='http://localhost:4566',
