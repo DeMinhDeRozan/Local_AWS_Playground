@@ -107,6 +107,7 @@ terraform.tfstate.backup
 ## 💡 Notes
 
 > - 🔒 All AWS credentials used here are **mock/dummy values** — nothing touches a real AWS account.
+> - 🎯 In case you would like to use the `host_s3.py` for real AWS practice, modify it to use the `.env` variables
 > - 🔌 Make sure port `4566` is free before starting Floci.
 > - 🗑️ To tear everything down: `terraform destroy` then `docker compose down`.
 
