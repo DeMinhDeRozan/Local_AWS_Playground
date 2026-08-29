@@ -30,12 +30,14 @@ This project is a hands-on scaffold for practicing AWS S3 workflows entirely on 
 
 ```
 aws_s3_sandbox/
-├── .gitignore
-├── versions.tf
-├── main.tf
 ├── s3
     ├──index.html
-└── README.md
+├── README.md
+├── host_s3.py
+├── .gitignore
+├── main.tf
+└── versions.tf
+
 ```
 
 ---
@@ -81,10 +83,10 @@ terraform apply
 
 ### 3️⃣ Run the Python Script
 
-Use `host_s3.py` to connect to the emulated S3 service and generate a presigned URL:
+As local execution of Python Script is allowed in `main.tf` so when `terraform apply` will automatically create presigned URL with below format and log:
 
 ```bash
-python host_s3.py
+aws_s3_object.upload_and_update (local-exec): Presigned URL: http://localhost:4566/my-bucket-1/index.html?AWSAccessKeyId=test&Signature=wQyueL1c3qRZ2euKXXya7hzs328%3D&Expires=1788007787
 ```
 
 ---
