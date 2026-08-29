@@ -83,10 +83,10 @@ terraform apply
 
 ### 3️⃣ Run the Python Script
 
-As local execution of Python Script is allowed in `main.tf` so when `terraform apply` will automatically create presigned URL with below format and log:
+Once the bucket and object are provisioned, run the Python script separately to read the uploaded file and generate a temporary presigned URL:
 
 ```bash
-aws_s3_object.upload_and_update (local-exec): Presigned URL: http://localhost:4566/my-bucket-1/index.html?AWSAccessKeyId=test&Signature=wQyueL1c3qRZ2euKXXya7hzs328%3D&Expires=1788007787
+python host_s3.py
 ```
 
 ---
